@@ -4,14 +4,15 @@ from selenium import webdriver
 import chromedriver_binary  # Adds chromedriver binary to path
 from selenium.webdriver.chrome.options import Options
 import time
-
-
+import os
+import glob
 
 class GnomadAPI():
-    def __init__(self,gene=None,version=None,tmp='.tmp'):
+    def __init__(self,gene=None,version=None,tmp='.tmp',outName=None):
         self.geneofinterest=gene
         self.gnomadversion=version
         self.tmpDir=tmp
+        self.outName=outName
         self.QueryGnomad()
 
 
@@ -25,6 +26,7 @@ class GnomadAPI():
         time.sleep(2)
         self.DownloadRegion()
         time.sleep(2)
+        self.MoveOutput()
     def SetOptions(self):
         cwkdir=os.getcwd()+f'/{self.tmpDir}'
         self.prefs = {"download.default_directory" : cwkdir};
@@ -59,7 +61,14 @@ class GnomadAPI():
 
        # a=self.driver.find_elements_by_xpath("//*[contains(text(), 'Export variants to CSV')]")
         a[0].click()
-        time.sleep(2)
+    def MoveOutput(self):
+        url=str(self.driver.current_url)
+        i=url.split("/")[-1].split("?")[0]
+        out=glob.glob(f'{self.tmpDir}/*{i}*.csv')
+        if self.outName!=None:
+            os.rename(f'{out[0]}',f'{os.getcwd()}/{self.outName}')
+        else:
+            os.rename(f'{out[0]}',f'{os.getcwd()}/{out[0]}')
 
 
 
