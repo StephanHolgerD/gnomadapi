@@ -32,7 +32,7 @@ class GnomadAPI():
         self.prefs = {"download.default_directory" : cwkdir};
         option = Options()
         option.add_experimental_option("prefs",self.prefs)
-        #option.add_argument("--headless")
+        option.add_argument("--headless")
         self.option=option
 
     def StartDriver(self):
@@ -68,7 +68,7 @@ class GnomadAPI():
         if self.outName!=None:
             os.rename(f'{out[0]}',f'{os.getcwd()}/{self.outName}')
         else:
-            os.rename(f'{out[0]}',f'{os.getcwd()}/{out[0]}')
+            os.rename(f'{out[0]}',f'{os.getcwd()}/{self.geneofinterest}_{out[0].split("/")[-1]}')
 
 
 
