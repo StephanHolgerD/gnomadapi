@@ -1,7 +1,7 @@
 # gnomad selenium API
 
 
-## rInstalling equirements
+## Installing requirements
 
 * google chrome webbrowser
 
@@ -12,7 +12,7 @@ pip install gnomadapi
 
 or via conda:
 ```
-gnomad) [stephano@fedora gnomadAPI]$ gnomadAPI -h
+$ gnomadAPI -h
 ArgumentParser(prog='gnomadAPI', usage=None, description='access to the gnomad database using selenium', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
 usage: gnomadAPI [-h] -g GENE [-v {gnomad_sv_r2_1,gnomad_r3,gnomad_r2_1,exac}]
 
