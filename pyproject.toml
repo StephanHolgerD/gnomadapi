@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gnomadapi"
-version = "1.0.0"
+version = "1.0.3"
 description = "selenium wrapper to access gnomad db from the cmd"
 authors = ["StephanHolgerD <stephdruk@googlemail.com>"]
 license = "MIT"
@@ -9,7 +9,6 @@ license = "MIT"
 python = "^3.10"
 selenium = "4.2.0"
 chromedriver-binary-auto = "0.1.2"
-chromedriver-binary = "^104.0.5112"
 glob2 = "^0.7"
 
 [tool.poetry.dev-dependencies]
